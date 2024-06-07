@@ -9,17 +9,10 @@ class Solution:
         for number in nums:
             numberCount[number] = numberCount.get(number, 0) + 1
 
-        result = []
+        sortedTuple = sorted(numberCount.items(), key=lambda count:count[1], reverse=True)[:k]
+        sortedNumbercount = {key: value for key, value in sortedTuple}
 
-        for _ in range(k):
-            largest = max(numberCount.values())
-            for key in numberCount:
-                if numberCount[key] == largest:
-                    result.append(key)
-                    numberCount.pop(key)
-                    break
-        
-        return result
+        return sortedNumbercount.keys()
 
 # After copy/pasting the template from LeetCode, uncomment the following to start testing.
 solution = Solution()
